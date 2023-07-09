@@ -17,7 +17,7 @@ options = (("1. Peacock", "2. Pigeon", "3. Swan" ),
            ("1. Football", "2. Cricket", "3. Hockey"),
            ("1. Lion", "2. Tiger", "3. elephant"))
 
-answers = ("1", "3", "2")
+answers = ("Peacock", "Hockey", "Tiger")
 
 score = 0
 question_index = 0
@@ -28,6 +28,12 @@ for question in questions:
 
     for option in options[question_index]:
         print(option)
+    guess = input ("Enter your answer: ")
+    if guess == answers [question_index]:
+        score += 1
+        print ("Correct ")
+    else:
+        print("Incorrect")
     question_index += 1
  
 
