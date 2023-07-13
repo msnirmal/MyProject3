@@ -1,10 +1,18 @@
+import os
+os.system('cls' if os.name == 'nt' else 'clear')
+
 print ("Welcome the quiz!!")
 print ("This is a general knowledge quiz")
 
+os.system('cls' if os.name == 'nt' else 'clear')
+
 player_name = input ("Please enter you name: ")
+os.system('cls' if os.name == 'nt' else 'clear')
 playquiz = input (f"{player_name},Do you want to play the quiz?: ")
+os.system('cls' if os.name == 'nt' else 'clear')
 if playquiz == "yes":
     print ("Lets play!!!!")
+    os.system('cls' if os.name == 'nt' else 'clear')
      
 else:
     quit()
@@ -19,6 +27,7 @@ options = (("1. Peacock", "2. Pigeon", "3. Swan" ),
 
 answers = ("Peacock", "Hockey", "Tiger")
 
+
 score = 0
 question_index = 0
 
@@ -32,8 +41,12 @@ for question in questions:
     if guess == answers [question_index]:
         score += 1
         print ("Correct ")
+        
+
     else:
         print("Incorrect")
+        
+
     question_index += 1
  
 
