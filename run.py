@@ -1,21 +1,25 @@
-import os
-os.system('cls' if os.name == 'nt' else 'clear')
-
-print ("Welcome the quiz!!")
-print ("This is a general knowledge quiz")
-
-os.system('cls' if os.name == 'nt' else 'clear')
+print ("Welcome to the quiz!!")
+print ()
+print ("Note: This quiz has many categories")
+print()
 
 player_name = input ("Please enter you name: ")
-os.system('cls' if os.name == 'nt' else 'clear')
-playquiz = input (f"{player_name},Do you want to play the quiz?: ")
-os.system('cls' if os.name == 'nt' else 'clear')
-if playquiz == "yes":
-    print ("Lets play!!!!")
-    os.system('cls' if os.name == 'nt' else 'clear')
-     
-else:
-    quit()
+print ()
+
+print ("Categories")
+print ("**********")
+print ()
+print ("1. History")
+print ("2. Food")
+print ("3. Animals")
+print ()
+quizcategory = int(input (f"Hi {player_name}!!! please select the quiz category, Example: 1 for History: "))
+
+if (quizcategory == 1):
+    print()
+    print("Lets play history quiz!!")
+    print()
+    
 questions = ("What's national bird of India? " ,
              "What's the national sport of India?" ,
              "What's the national Animal of India? "
@@ -31,33 +35,20 @@ answers = ("Peacock", "Hockey", "Tiger")
 score = 0
 question_index = 0
 
- 
 for question in questions: 
     print(question)
-
     for option in options[question_index]:
         print(option)
     guess = input ("Enter your answer: ")
     if guess == answers [question_index]:
         score += 1
         print ("Correct ")
-        
-
     else:
-        print("Incorrect")
-        
+        print("Incorrect")   
 
-    question_index += 1
- 
-
-
-    
-
+    question_index +=1 
 
 
 
 
  
-
-
-
