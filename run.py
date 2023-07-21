@@ -1,54 +1,82 @@
-print ("Welcome to the quiz!!")
-print ()
-print ("Note: This quiz has many categories")
-print()
+questions = {
+ "Who created Python?: ": "A",
+ "What year was Python created?: ": "B",
+ "Python is tributed to which comedy group?: ": "C",
+ "Is the Earth round?: ": "A"
+}
 
-player_name = input ("Please enter you name: ")
-print ()
+options = [["A. Guido van Rossum", "B. Elon Musk", "C. Bill Gates", "D. Mark Zuckerburg"],
+          ["A. 1989", "B. 1991", "C. 2000", "D. 2016"],
+          ["A. Lonely Island", "B. Smosh", "C. Monty Python", "D. SNL"],
+          ["A. True","B. False", "C. sometimes", "D. What's Earth?"]]
 
-print ("Categories")
-print ("**********")
-print ()
-print ("1. History")
-print ("2. Food")
-print ("3. Animals")
-print ()
-quizcategory = int(input (f"Hi {player_name}!!! please select the quiz category, Example: 1 for History: "))
+player_name = input ("Please enter your name: \n")
+print("\n")
+print(f"Welcome {player_name}!! lets play the quiz")
+print("\n")
+os.system('cls' if os.name == 'nt' else 'clear')
+print ("Here are your questions, wish you all the best")
 
-if (quizcategory == 1):
-    print()
-    print("Lets play history quiz!!")
-    print()
-    
-questions = ("What's national bird of India? " ,
-             "What's the national sport of India?" ,
-             "What's the national Animal of India? "
-            )
+def new_game():
 
-options = (("1. Peacock", "2. Pigeon", "3. Swan" ),
-           ("1. Football", "2. Cricket", "3. Hockey"),
-           ("1. Lion", "2. Tiger", "3. elephant"))
+    guesses = []
+    correct_guesses = 0
+    question_num = 1 
 
-answers = ("Peacock", "Hockey", "Tiger")
+    for key in questions:
+        print("-------------------------")
+        print(key)
+        for i in options[question_num-1]:
+            print(i)
+        guess = input("Enter (A, B, C, or D): ")
+        guess = guess.upper()
+        guesses.append(guess)
 
+        correct_guesses += check_answer(questions.get(key), guess)
+        question_num += 1
 
-score = 0
-question_index = 0
+    display_score(correct_guesses, guesses)
 
-for question in questions: 
-    print(question)
-    for option in options[question_index]:
-        print(option)
-    guess = input ("Enter your answer: ")
-    if guess == answers [question_index]:
-        score += 1
-        print ("Correct ")
+def check_answer(answer, guess):  
+
+    if answer == guess:
+        print("CORRECT!")
+        return 1
     else:
-        print("Incorrect")   
+        print("WRONG!")
+        return 0
 
-    question_index +=1 
+def display_score(correct_guesses, guesses):
+    print("-------------------------")
+    print("RESULTS")
+    print("-------------------------")
 
+    print("Answers: ", end="")
+    for i in questions:
+        print(questions.get(i), end=" ")
+    print()
 
+    print("Guesses: ", end="")
+    for i in guesses:
+        print(i, end=" ")
+    print()
 
+    score = int((correct_guesses/len(questions))*100)
+    print("Your score is: "+str(score)+"%")
 
- 
+def play_again():
+
+    response = input("Do you want to play again? (yes or no): ")
+    response = response.upper()
+
+    if response == "YES":
+        return True
+    else:
+        return False
+
+new_game()    
+
+while play_again():
+    new_game()
+
+print("Byeeeeee!")
