@@ -14,7 +14,6 @@ player_name = input ("Please enter your name: \n")
 print("\n")
 print(f"Welcome {player_name}!! lets play the quiz")
 print("\n")
-os.system('cls' if os.name == 'nt' else 'clear')
 print ("Here are your questions, wish you all the best")
 
 def new_game():
