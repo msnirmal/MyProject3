@@ -48,8 +48,18 @@ def new_game():
             print(i)
         guess = input("Enter (A, B, C, or D): ")
         guess = guess.upper()
-        guesses.append(guess)
-
+        guesses.append(guess)               
+        if guess == "A":
+            correct_guesses += 1
+        elif guess == "B":
+            correct_guesses += 1
+        elif guess == "C":
+            correct_guesses += 1
+        elif guess == "D":
+            correct_guesses += 1
+        else:
+            print ("invalid")
+        guess = input("Enter (A, B, C, or D): ")
         correct_guesses += check_answer(questions.get(key), guess)
         time.sleep(3)
         clear()
