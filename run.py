@@ -1,3 +1,6 @@
+import time
+import os
+
 questions = {
  "Who created Python?: ": "A",
  "What year was Python created?: ": "B",
@@ -10,11 +13,28 @@ options = [["A. Guido van Rossum", "B. Elon Musk", "C. Bill Gates", "D. Mark Zuc
           ["A. Lonely Island", "B. Smosh", "C. Monty Python", "D. SNL"],
           ["A. True","B. False", "C. sometimes", "D. What's Earth?"]]
 
-player_name = input ("Please enter your name: \n")
-print("\n")
+def clear():
+    """
+    Function to clear the terminal on windows, mac and
+    linux for a better user experience.
+    """
+    # for Windows
+    if os.name == 'nt':
+        os.system('cls')
+    # for Mac and Linux (here, os.name is 'posix')
+    else:
+        os.system('clear')
+
+
+player_name = input ("Please enter your name or press enter: \n")
+time.sleep(3)
+clear()
 print(f"Welcome {player_name}!! lets play the quiz")
-print("\n")
+time.sleep(3)
+clear()
 print ("Here are your questions, wish you all the best")
+time.sleep(3)
+clear()
 
 def new_game():
 
@@ -23,7 +43,6 @@ def new_game():
     question_num = 1 
 
     for key in questions:
-        print("-------------------------")
         print(key)
         for i in options[question_num-1]:
             print(i)
@@ -32,6 +51,8 @@ def new_game():
         guesses.append(guess)
 
         correct_guesses += check_answer(questions.get(key), guess)
+        time.sleep(3)
+        clear()
         question_num += 1
 
     display_score(correct_guesses, guesses)
@@ -69,6 +90,8 @@ def play_again():
     response = response.upper()
 
     if response == "YES":
+        time.sleep(2)
+        clear()
         return True
     else:
         return False
