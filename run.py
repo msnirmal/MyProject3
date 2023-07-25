@@ -28,24 +28,26 @@ def clear():
         os.system('clear')
 
 
-print("GENERAL KNOWLEDGE QUIZ")
-print("\n")
-time.sleep(1)
-
 def initiate_game():
-    
+
+    print("GENERAL KNOWLEDGE QUIZ")
+    print()
+    time.sleep(1)
     while True:
-        player_name = input("Enter your name or press 'enter' key:\n").capitalize()
+        player_name = input("Please enter your name:\n").capitalize()           
+        print()                      
         if not player_name.isalpha():
-            print("INVALID ENTRY, ENTER JUST LETTERS")
+            print("INVALID ENTRY")
+            print("(* Name should include ONLY letters)")
+            print("(* Numbers/ Special characters/ Alphanumeric etc not allowed)")
+            print()
         
         else:            
             print(f"Welcome {player_name}, lets play :-)")
             time.sleep(3)
             print("\n")
-            print("Here are your questions, wish you all the best....")
+            print("Here are your questions, wish you all the best!!")
             time.sleep(3)
-            print("\n")
             clear()
             break
 
@@ -57,33 +59,25 @@ def initiate_game():
         print(key)
         for i in options[question_num-1]:
             print(i)
-        
-        allowed = set("ABCD")
-        while True:
-            guess = input("Enter (A, B, C, or D):\n")
-            guess = guess.upper()       
-            guesses.append(guess)    
-            if guess and allowed.issuperset(guess):
-                correct_guesses += check_answer(questions.get(key), guess)
-                time.sleep(2)
-                clear()
-                break
-                question_num += 1
-
-            print("Invalid Entry")
-            
+        guess = input("Enter (A, B, C, or D):\n")
+        guess = guess.upper()       
+        guesses.append(guess)       
+        correct_guesses += check_answer(questions.get(key), guess)
+        time.sleep(2)
+        clear()
+        question_num += 1
     show_score(correct_guesses, guesses)
 
 
 def check_answer(answer, guess):  
 
     if answer == guess:
-        print("\n")
-        print("Yayy that's CORRECT!")
+        print()
+        print("CORRECT :-)")
         return 1         
     else:
-        print("\n")
-        print("Oops that's INCORRECT!")
+        print()
+        print("INCORRECT :-(")
         return 0         
 
 
