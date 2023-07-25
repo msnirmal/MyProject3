@@ -29,7 +29,6 @@ def clear():
 
 
 def initiate_game():
-
     print("GENERAL KNOWLEDGE QUIZ")
     print()
     time.sleep(1)
@@ -45,7 +44,7 @@ def initiate_game():
         else:            
             print(f"Welcome {player_name}, lets play :-)")
             time.sleep(3)
-            print("\n")
+            print()
             print("Here are your questions, wish you all the best!!")
             time.sleep(3)
             clear()
