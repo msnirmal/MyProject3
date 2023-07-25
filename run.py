@@ -57,14 +57,21 @@ def initiate_game():
         print(key)
         for i in options[question_num-1]:
             print(i)
-        while true
-        guess = input("Enter (A, B, C, or D):\n")
-        guess = guess.upper()       
-        guesses.append(guess)       
-        correct_guesses += check_answer(questions.get(key), guess)
-        time.sleep(2)
-        clear()
-        question_num += 1
+        
+        allowed = set("ABCD")
+        while True:
+            guess = input("Enter (A, B, C, or D):\n")
+            guess = guess.upper()       
+            guesses.append(guess)    
+            if guess and allowed.issuperset(guess):
+                correct_guesses += check_answer(questions.get(key), guess)
+                time.sleep(2)
+                clear()
+                break
+                question_num += 1
+
+            print("Invalid Entry")
+            
     show_score(correct_guesses, guesses)
 
 
