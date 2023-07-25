@@ -1,42 +1,53 @@
-import time
 import os
+import time
 
 questions = {
- "Who created Python?: ": "A",
- "What year was Python created?: ": "B",
- "Python is tributed to which comedy group?: ": "C",
- "Is the Earth round?: ": "A"
-}
+ "What do elephants use their trunk for?: ": "D",
+ "What element does the chemical symbol Au stand for?: ": "D",
+ "What is the most visited tourist attraction in the world?: ": "A",
+ "What is the only food that cannot go bad?: ": "D",
+ "Who invented the gramophone?: ": "B"
+ }
 
-options = [["A. Guido van Rossum", "B. Elon Musk", "C. Bill Gates", "D. Mark Zuckerburg"],
-          ["A. 1989", "B. 1991", "C. 2000", "D. 2016"],
-          ["A. Lonely Island", "B. Smosh", "C. Monty Python", "D. SNL"],
-          ["A. True","B. False", "C. sometimes", "D. What's Earth?"]]
+options = [["A. Smell", "B. Carry food", "C. Communication", 
+            "D. All of the above"],
+           ["A. Silver", "B. Magnesium", "C. Salt", "D. Gold"],
+           ["A. Eiffel Tower", "B. Statue of Liberty",  
+            "C. Great Wall of China", "D. Colosseum"],
+           ["A. Dark chocolate", "B. Peanut butter", "C. Canned tuna", 
+            "D. Honey"],
+           ["A. Thomas Edison", "B. Emile Berliner", "C. Albert Einstein", 
+            "D. Isaac Newton"],
+           ]
+
 
 def clear():
-    """
-    Function to clear the terminal on windows, mac and
-    linux for a better user experience.
-    """
-    # for Windows
     if os.name == 'nt':
-        os.system('cls')
-    # for Mac and Linux (here, os.name is 'posix')
+        os.system('cls')     
     else:
         os.system('clear')
 
 
-player_name = input ("Please enter your name or press enter: \n")
-time.sleep(3)
-clear()
-print(f"Welcome {player_name}!! lets play the quiz")
-time.sleep(3)
-clear()
-print ("Here are your questions, wish you all the best")
-time.sleep(3)
-clear()
+print("GENERAL KNOWLEDGE QUIZ")
+print("\n")
+time.sleep(1)
 
-def new_game():
+def initiate_game():
+    
+    while True:
+        player_name = input("Enter your name or press 'enter' key:\n").capitalize()
+        if not player_name.isalpha():
+            print("INVALID ENTRY, ENTER JUST LETTERS")
+        
+        else:            
+            print(f"Welcome {player_name}, lets play :-)")
+            time.sleep(3)
+            print("\n")
+            print("Here are your questions, wish you all the best....")
+            time.sleep(3)
+            print("\n")
+            clear()
+            break
 
     guesses = []
     correct_guesses = 0
@@ -46,53 +57,47 @@ def new_game():
         print(key)
         for i in options[question_num-1]:
             print(i)
-        guess = input("Enter (A, B, C, or D): ")
-        guess = guess.upper()
-        guesses.append(guess)               
-        if guess == "A":
-            correct_guesses += 1
-        elif guess == "B":
-            correct_guesses += 1
-        elif guess == "C":
-            correct_guesses += 1
-        elif guess == "D":
-            correct_guesses += 1
-        else:
-            print ("invalid")
-        guess = input("Enter (A, B, C, or D): ")
+        while true
+        guess = input("Enter (A, B, C, or D):\n")
+        guess = guess.upper()       
+        guesses.append(guess)       
         correct_guesses += check_answer(questions.get(key), guess)
-        time.sleep(3)
+        time.sleep(2)
         clear()
         question_num += 1
+    show_score(correct_guesses, guesses)
 
-    display_score(correct_guesses, guesses)
 
 def check_answer(answer, guess):  
 
     if answer == guess:
-        print("CORRECT!")
-        return 1
+        print("\n")
+        print("Yayy that's CORRECT!")
+        return 1         
     else:
-        print("WRONG!")
-        return 0
+        print("\n")
+        print("Oops that's INCORRECT!")
+        return 0         
 
-def display_score(correct_guesses, guesses):
-    print("-------------------------")
-    print("RESULTS")
-    print("-------------------------")
 
-    print("Answers: ", end="")
+def show_score(correct_guesses, guesses):
+    print("********************************************************")
+    print("See below your guesses against correct answers and score")
+    print("********************************************************")
+
+    print("Correct Answers: ", end="")
     for i in questions:
         print(questions.get(i), end=" ")
     print()
 
-    print("Guesses: ", end="")
+    print("Your Guesses: ", end="")
     for i in guesses:
         print(i, end=" ")
     print()
 
     score = int((correct_guesses/len(questions))*100)
-    print("Your score is: "+str(score)+"%")
+    print("You have scored: "+str(score)+"%")
+
 
 def play_again():
 
@@ -106,9 +111,11 @@ def play_again():
     else:
         return False
 
-new_game()    
+
+initiate_game()    
 
 while play_again():
-    new_game()
+    initiate_game()
 
-print("Byeeeeee!")
+print("Thank you for playing the quiz game")
+quit()
